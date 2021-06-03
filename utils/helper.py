@@ -1,3 +1,5 @@
+"""Writing extra functions not related to any class but can be used in multiple classes"""
+
 from django.utils.text import slugify
 
 
@@ -9,9 +11,9 @@ def get_unique_slug(model_instance, slug, slug_field_name):
     """
     unique_slug = slugify(slug)
     extension = 1
-    ModelClass = model_instance.__class__
+    model_class = model_instance.__class__
 
-    while ModelClass._default_manager.filter(
+    while model_class._default_manager.filter( # pylint: disable=protected-access
             **{slug_field_name: unique_slug}
     ).exclude(pk=model_instance.id).exists():
         unique_slug = '{}-{}'.format(slug, extension)

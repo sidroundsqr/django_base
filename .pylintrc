@@ -1,0 +1,5 @@
+[MESSAGES CONTROL]
+disable = too-few-public-methods, missing-function-docstring, too-many-locals,
+          too-many-branches
+max-line-length=122
+init-hook="from pylint.config import find_pylintrc; import os, sys; sys.path.append(os.path.dirname(find_pylintrc()))"
